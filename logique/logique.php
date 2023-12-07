@@ -98,13 +98,28 @@ $baseDonneesRamens = [
 ];
 
 
+$dbHost = "localhost";
+$dbName = "sushis";
+
+$username = "aaaaaa";
+$password = "aaaaaaaa";
+
+$pdo = new PDO(
+    "mysql:host=$dbHost;dbname=$dbName",
+    $username,
+    $password,
+    [
+        PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC
+    ]
+);
 function afficher($nomDeTemplate, $donnees)
 {
 
     ob_start();
     extract($donnees);
 
-    require_once "templates/${nomDeTemplate}.html.php";
+    require_once "templateshtml.php";
 
     $content = ob_get_clean();
 
